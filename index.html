@@ -243,35 +243,35 @@
         }
       }, 1000);
     }
+function sendResultsToBackend() {
+  const data = {
+    email: userEmail, // Include the user's email
+    answers: results,
+  };
 
-    function sendResultsToBackend() {
-      const data = {
-        email: userEmail, // Include the user email
-        answers: results,
-      };
+  fetch('https://vercel.com/kanishkasinghh19s-projects/pookiequest/HBD45WnDTgWh3FCDMC4hvwG3Jc78', { // Update this URL to your backend's global endpoint
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((responseData) => {
+      console.log('Success:', responseData);
+      alert('Your responses were successfully saved!');
+    })
+    .catch((error) => {
+      console.error('Error while saving responses:', error);
+      alert('Failed to save your responses. Please try again later.');
+    });
+}
 
-      fetch('https://few-dandy-level.glitch.me/saveResponses', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(HTTP error! status: ${response.status});
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log('Success:', data);
-          alert('Thank you for your responses!');
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-          alert('Failed to save your responses.');
-        });
-    }
   </script>
 </body>
 </html> 
