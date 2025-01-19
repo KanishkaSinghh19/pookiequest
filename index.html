@@ -249,7 +249,7 @@ function sendResultsToBackend() {
     answers: results,
   };
 
-  fetch('https://vercel.com/kanishkasinghh19s-projects/pookiequest-6olf/EPMBzYGbaamYyMaKnG4KfdCz36c5', { // Update this URL to your backend's global endpoint
+  fetch('mongodb+srv://kanishkasingh1920:<db_password>@cluster0.9pprp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { // Update this URL to your backend's global endpoint
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
