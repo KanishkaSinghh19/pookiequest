@@ -84,7 +84,7 @@ function sendResultsToBackend() {
     answers: results,
   };
 
-  fetch('https://few-dandy-level.glitch.me/saveResponses', {
+  fetch('https://backend-g2ri.onrender.com', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
