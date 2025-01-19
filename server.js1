@@ -2,32 +2,35 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 // Middleware
-app.use(cors());
+app.use(cors()); // Allows requests from the frontend
 app.use(bodyParser.json());
 
 // MongoDB Connection
-mongoose
-  .connect('mongodb://localhost:27017/responsesDB', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.error('MongoDB connection error:', err));
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://kanishkasingh1920:kanishkasingh1920@cluster0.9pprp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('Connected to MongoDB Atlas'))
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+    process.exit(1);
+  });
 
 // Response Schema
 const responseSchema = new mongoose.Schema({
   email: { type: String, required: true },
   responses: { type: Array, required: true },
 });
-
 const Response = mongoose.model('Response', responseSchema);
 
-// API to save responses
+// API Endpoint
 app.post('/saveResponses', async (req, res) => {
   const { email, responses: userResponses } = req.body;
 
@@ -47,7 +50,8 @@ app.post('/saveResponses', async (req, res) => {
   }
 });
 
-// Start the server
+// Start the Server
 app.listen(PORT, () => {
-  console.log(`Server running globally at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
+
