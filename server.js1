@@ -12,7 +12,7 @@ app.use(cors()); // Allows requests from the frontend
 app.use(bodyParser.json());
 
 // MongoDB Connection
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://kanishkasingh1920:kanishkasingh1920@cluster0.9pprp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://kanishkasingh1920:<db_password>@cluster0.9pprp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
