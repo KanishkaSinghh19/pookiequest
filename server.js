@@ -7,7 +7,7 @@ const app = express();
 const PORT = 3000;
 
 // MongoDB connection URI
-const MONGO_URI = 'mongodb+srv://kanishkasingh1920:password1920@cluster0.rneag.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'; // Replace with your MongoDB URI
+const MONGO_URI = 'mongodb+srv://kanishkasingh1920:password1920@cluster0.9pprp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'; // Replace with your MongoDB URI
 
 // Connect to MongoDB using Mongoose
 mongoose.connect(MONGO_URI, {
